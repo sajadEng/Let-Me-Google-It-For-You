@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <style>
+        body {
+            background: rgb(30,30,30);
+        }
+        * {
+            transition: all 30ms;
+        }
+        *::selection {
+            background: whitesmoke;
+            color: rgb(30, 30, 30);
+        }
+        * img {
+            max-height: 30px;
+            margin-left: -32px;
+            border-radius: 50px;
+            background: whitesmoke;
+        }
+        * img:hover {
+            background: royalblue;
+
+        }
+        div.container {
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: grid;
+            justify-content: center;
+            row-gap: 16px;
+        }
+        div.google-text {
+            font-size: 7rem;
+            color: rgb(240, 240, 240);
+            font-weight: bold;
+            font-family:  arial, monospace;
+/*            text-shadow: 0 0 0.51rem rgb(240, 240, 240);*/
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            color: whitesmoke;
+        }
+        /* input[placeholder= "Search"] {
+            width:;
+        } */
+        div.input-container  {
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div.input-container input {
+            font-size: 1.1rem;
+            width: 400px;
+            height: 30px;
+            border-radius: 50px;
+            border: none;
+            padding-left: 20px;
+        }
+        div.input-container input::selection {
+            background: rgb(30, 30, 30);
+            color: whitesmoke;
+        }
+        .letter-space-anim {
+            animation: letter-space-anim 1s ease 1 both;
+        }
+        @keyframes letter-space-anim {
+            1% {
+                transform:  rotateY(0deg);
+            }
+            50% {
+                transform: rotateY(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="google-text">
+            <span>G</span>
+            <span>o</span>
+            <span>o</span>
+            <span>g</span>
+            <span>l</span>
+            <span>e</span>
+        </div>
+        <div class="input-container">
+            <label for="search input">
+                <input type="text" placeholder="Search">
+            </label>
+            <img src="search-icon.png">
+        </div>
+    </div>
+
+    <script>
+        const body = document.querySelector('body');
+        const input = document.querySelector('input');
+        const googleText = document.querySelector('div.google-text');
+        input.addEventListener('focus', event => {
+            for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
+                // body.style.background = 'whitesmoke';
+                // googleText.style.color = 'rgb(30,30,30)';
+                input.style.background = 'rgb(30,30,30)';
+                input.style.color = 'whitesmoke';
+                document.querySelectorAll('span')[i].classList.add('letter-space-anim');
+            }
+        })
+        input.addEventListener('focusout', event => {
+            for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
+                // googleText.style.color = 'whitesmoke';
+                // body.style.background = 'rgb(30,30,30)';
+                input.style.background = 'whitesmoke';
+                input.style.color = 'rgb(30,30,30)';
+                document.querySelectorAll('span')[i].classList.remove('letter-space-anim');
+            }
+        })
+        for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
+            document.querySelectorAll('span')[i].style.animationDelay = `${Math.floor(Math.random() * 300)}ms`
+        }
+    </script>
+</body>
+</html>
