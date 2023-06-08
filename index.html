@@ -9,26 +9,16 @@
         body {
             background: rgb(30,30,30);
         }
-        *.disable {
+        .copy-btn.disable {
             display: none;
         }
         * {
+            font-family: arial, sans-serif, serif, cursive, monospace;
             transition: all 30ms;
         }
         *::selection {
             background: whitesmoke;
             color: rgb(30, 30, 30);
-        }
-        .generate-btn {
-            max-height: 30px;
-            padding: 7px;
-            margin-left: -32px;
-            border-radius: 50px;
-            background: whitesmoke;
-        }
-        .generate-btn:hover {
-            background: royalblue;
-            cursor: default;
         }
         div.container {
             position: fixed;
@@ -54,30 +44,55 @@
             color: whitesmoke;
         }
         div.input-container  {
+            display: grid;
+            align-items: space-between;
             width: 500px;
+            grid-template-columns: 1fr 50px;
+            column-gap: 0;
+            background: whitesmoke;
+        }
+        div.input-container input {
+            width: 100%;
+            background: none;
+            border: 0;
+            padding: 0;
+            height: 35px;
+            font-size: 1.3rem;
+        }
+        .generate-btn {
+            color: royalblue;
+            height: 100%;
+            margin: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+        .generate-btn:hover {
+            background: black;
+        }
+        .copy-btn {
+            background: whitesmoke;
+            color: rgb(30, 30, 30);
+            border: none;
+/*            width: 30px;*/
+            height: 20px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .copy-result-text {
             color: whitesmoke;
-        }
-        div.input-container input {
-            font-size: 1.1rem;
-            width: 400px;
-            height: 30px;
-            border-radius: 50px;
-            border: none;
-            padding-left: 20px;
-        }
-        .letter-space-anim {
-            animation: letter-space-anim 1s ease 1 both;
         }
         .generated-link-container {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
+        }
+        .letter-space-anim {
+            animation: letter-space-anim 1s ease 1 both;
         }
         @keyframes letter-space-anim {
             1% {
@@ -140,28 +155,28 @@
         if (fragmentIdentifierOk === false) {
 
 
-            // input events
-            input.addEventListener('focus', event => {
-                for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
-                    // body.style.background = 'whitesmoke';
-                    // googleText.style.color = 'rgb(30,30,30)';
-                    input.style.background = 'rgb(30,30,30)';
-                    input.style.color = 'whitesmoke';
-                    document.querySelectorAll('span')[i].classList.add('letter-space-anim');
-                }
-            })
-            input.addEventListener('focusout', event => {
-                for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
-                    // googleText.style.color = 'whitesmoke';
-                    // body.style.background = 'rgb(30,30,30)';
-                    input.style.background = 'whitesmoke';
-                    input.style.color = 'rgb(30,30,30)';
-                    document.querySelectorAll('span')[i].classList.remove('letter-space-anim');
-                }
-            })
-            for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
-                document.querySelectorAll('span')[i].style.animationDelay = `${Math.floor(Math.random() * 300)}ms`
-            }
+            // // input events
+            // input.addEventListener('focus', event => {
+            //     for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
+            //         // body.style.background = 'whitesmoke';
+            //         // googleText.style.color = 'rgb(30,30,30)';
+            //         input.style.background = 'rgb(30,30,30)';
+            //         input.style.color = 'whitesmoke';
+            //         document.querySelectorAll('span')[i].classList.add('letter-space-anim');
+            //     }
+            // })
+            // input.addEventListener('focusout', event => {
+            //     for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
+            //         // googleText.style.color = 'whitesmoke';
+            //         // body.style.background = 'rgb(30,30,30)';
+            //         input.style.background = 'whitesmoke';
+            //         input.style.color = 'rgb(30,30,30)';
+            //         document.querySelectorAll('span')[i].classList.remove('letter-space-anim');
+            //     }
+            // })
+            // for ( let i = 0; i < document.querySelectorAll('span').length ; i++ ) {
+            //     document.querySelectorAll('span')[i].style.animationDelay = `${Math.floor(Math.random() * 300)}ms`
+            // }
 
 
             // create fragment idefntifier
